@@ -6,18 +6,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keydash-frontend
+      app: frontend-deployment
   template:
     metadata:
       labels:
-        app: keydash-frontend
+        app: frontend-deployment
     spec:
       containers:
-        - name: keydash-frontend
+        - name: frontend-deployment
           imagePullPolicy: Always
           image: kurtaga/keydash-frontend:v108
-          env:
-            - name: REACT_APP_BACKEND_URL
-              value: "http://generator-service:80/get"
+          # env:
+          #   - name: REACT_APP_BACKEND_URL
+          #     value: "http://generator-service:80/get"
           ports:
             - containerPort: 80
