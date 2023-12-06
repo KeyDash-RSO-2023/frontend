@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keydash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keydash-frontend
+  template:
+    metadata:
+      labels:
+        app: keydash-frontend
+    spec:
+      containers:
+        - name: keydash-frontend
+          imagePullPolicy: Always
+          image: kurtaga/keydash-frontend:v108
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: "http://generator-service:80/get"
+          ports:
+            - containerPort: 80

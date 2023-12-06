@@ -1,0 +1,88 @@
+/* latin */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotomono/v23/L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSh0mQ.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  font-family: "Roboto Mono" !important;
+}
+
+.textsContainer {
+  margin: 100px 0px 100px 0px;
+  height: 190px;
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertical Centering */
+  justify-content: center; /* Horizontal Centering */
+  position: relative; /* Relative positioning for absolute children */
+}
+
+.texts {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+  border: none;
+  text-align: left;
+  /* color: #636568; */
+  font-size: 25px;
+  line-height: 1.2;
+  word-spacing: 10px;
+  letter-spacing: 1px;
+  text-align: justify;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+textarea {
+  background: transparent;
+  resize: none;
+  /* caret-color: #e1b214; */
+  color: transparent !important;
+}
+
+textarea:focus {
+  border: none; /* removes border on focus */
+  outline: none; /* optional: removes the default focus outline */
+}
+
+.correct-char {
+  color: #cfcec3;
+}
+
+.incorrect-char {
+  color: #bb4450;
+}
+
+.normal-char {
+  color: #636568;
+}
+
+.caret {
+  position: absolute;
+  height: 30px;
+  width: 1.25px;
+  background: #e1b214;
+  animation: cursor-blink 0.95s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
