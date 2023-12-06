@@ -6,6 +6,8 @@
   left: 0;
   right: 0;
   margin: auto;
+  justify-content: space-between;
+  align-items: center;
 }
 
 img {
@@ -17,4 +19,17 @@ img {
   font-size: 30px;
   color: #cfcec3;
   font-weight: bold;
+}
+
+.profile {
+  color: #cfcec3;
+}
+
+.about {
+  color: #cfcec3;
+}
+
+.link_style {
+  text-decoration: none;
+  color: #cfcec3;
 }
