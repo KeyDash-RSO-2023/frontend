@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { fetchUser } from "../../services/fetchUser";
+import { useParams } from "react-router-dom";
 
 import "./Profile.css";
 
 const Profile = () => {
   const [data, setData] = useState(null);
-  const [id, setId] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { userId } = useParams();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const fetchedData = await fetchUser(id);
+        const fetchedData = await fetchUser(userId);
         setData(fetchedData);
         setLoading(false);
       } catch (error) {

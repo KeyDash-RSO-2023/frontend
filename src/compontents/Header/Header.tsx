@@ -14,7 +14,7 @@ const Header = () => {
       <div className="col">
         <div className="row">
           <div className="container profile">
-            <Link to="/frontend/profile" className="link_style">Profile</Link>
+            <Link to="/frontend/profile/1" className="link_style">Profile</Link>
           </div>
           <div className="container about">
             <Link to="/frontend/about" className="link_style">About</Link>
