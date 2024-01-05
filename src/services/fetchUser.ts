@@ -1,10 +1,12 @@
-const API_URL = "http://51.12.152.201/users/v1/users/";
+// const API_URL = "http://51.12.152.201/users/v1/users/";
+
+const USERS_URL = import.meta.env.VITE_USERS_API_URL
 
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
 export const fetchUser = async (id) => {
   try {
-    const response = await fetch(API_URL + id);
+    const response = await fetch(USERS_URL + id);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
