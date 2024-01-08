@@ -4,9 +4,9 @@ const USERS_URL = import.meta.env.VITE_USERS_API_URL
 
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
-export const fetchUser = async (id) => {
+export const fetchSession = async (id) => {
   try {
-    const response = await fetch(USERS_URL + id);
+    const response = await fetch(USERS_URL + "sessions/" + id);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -18,9 +18,9 @@ export const fetchUser = async (id) => {
   }
 };
 
-export const fetchUsers = async () => {
+export const fetchSessions = async () => {
   try {
-    const response = await fetch(USERS_URL);
+    const response = await fetch(USERS_URL + "sessions/");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

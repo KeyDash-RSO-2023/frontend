@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from "../Header/Header";
 import Login from "../Login/Login";
 import { AuthProvider } from "../AuthContext/AuthContext";
+import Admin from "../Admin/Admin";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/frontend/profile" element={<Profile />} />
             <Route path="/frontend/about" element={<About />} />
             <Route path="/frontend/login" element={<Login />} />
+            <Route path="/frontend/admin" element={<Admin />} />
           </Routes>
         </AuthProvider>
       </Router>

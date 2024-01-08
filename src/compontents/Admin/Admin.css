@@ -1,0 +1,28 @@
+.delete {
+    background: #ff4d4d; /* Red background */
+    border: none;
+    border-radius: 0.5rem;
+    color: #ffffff; /* White text */
+    font-size: 1em;
+    line-height: 1.25em;
+    outline: none;
+    padding: .5em;
+    margin: 0.3em 0;
+    cursor: pointer; /* Changes cursor to a hand symbol */
+}
+
+.delete:hover {
+    background: #ff3333; /* Darker shade of red on hover */
+    color: #ffffff;
+}
+
+.name {
+    color: #e6e6e6; /* White text */
+    margin-right: 0.5em;
+}
+
+.row {
+    display: 'flex';
+    align-items: 'center';
+    margin-bottom: '10px';
+}
