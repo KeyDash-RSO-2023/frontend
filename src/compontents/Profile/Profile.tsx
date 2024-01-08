@@ -8,12 +8,12 @@ const Profile = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const { userId } = useParams();
+  const [session, setSession] = useState(JSON.parse(localStorage.getItem('session')));
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const fetchedData = await fetchUser(userId);
+        const fetchedData = await fetchUser(session.userId);
         setData(fetchedData);
         setLoading(false);
       } catch (error) {

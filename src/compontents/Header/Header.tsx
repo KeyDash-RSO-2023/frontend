@@ -13,7 +13,7 @@ const Header = () => {
       </div>
       <div>
         <div className="profile float-right">
-          <Link to="/frontend/profile/1" className="link_style">Profile</Link>
+          <Link to="/frontend/profile" className="link_style">Profile</Link>
         </div>
         <div className="about">
           <Link to="/frontend/about" className="link_style">About</Link>
