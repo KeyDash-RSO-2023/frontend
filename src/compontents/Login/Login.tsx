@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { login, register } from "../../services/login";
 
 import "./Login.css";
-import { login } from "../../services/login";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ const Login = () => {
 
     if (session) {
       localStorage.setItem('session', JSON.stringify(session));
-      navigate('/frontend/profile/' + session.userId);
+      navigate('/frontend/profile');
     } else {
       setError('Wrong credentials');
     }
@@ -38,8 +38,16 @@ const Login = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Call your register service here with registerData
-    // Example: await registerService(registerData);
+
+    const session = await register(registerData); 
+
+    if (session) {
+      localStorage.setItem('session', JSON.stringify(session));
+      navigate('/frontend/profile/' + session.userId);
+    } else {
+      setError('Wrong credentials');
+    }
+
     setLoading(false);
   };
 
