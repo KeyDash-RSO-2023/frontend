@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { login, register } from "../../services/login";
 import { useAuth } from '../AuthContext/AuthContext';
 
-import "./Login.css";
+import styles from './Login.module.css';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -65,47 +65,47 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-        <div className="row">
-            <div className="col col-md-4">
+    <div className={styles.container}>
+        <div className={styles.row}>
+            <div className={`${styles.col} ${styles.colmd4}`}>
                 <form onSubmit={handleLogin}>
-                    <div className="title">
+                    <div className={styles.title}>
                         login
                     </div>
                     <div>
-                        <input type="text" name="email" placeholder="email" onChange={handleLoginChange} />
+                        <input className={styles.input} type="text" name="email" placeholder="email" onChange={handleLoginChange} />
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="password" onChange={handleLoginChange} />
+                        <input className={styles.input} type="password" name="password" placeholder="password" onChange={handleLoginChange} />
                     </div>
                     <div>
-                        <input type="submit" value="login" />
+                        <input className={`${styles.submit} ${styles.input}`} type="submit" value="login" />
                     </div>
                 </form>
             </div>
 
-            <div className="col col-md-4">
+            <div className={`${styles.col} ${styles.colmd4}`}>
                 <form onSubmit={handleRegister}>
-                    <div className="title">
+                    <div className={styles.title}>
                         register
                     </div>
                     <div>
-                        <input type="text" name="name" placeholder="name" onChange={handleRegisterChange} />
+                        <input className={styles.input} type="text" name="name" placeholder="name" onChange={handleRegisterChange} />
                     </div>
                     <div>
-                        <input type="text" name="surname" placeholder="surname" onChange={handleRegisterChange}/>
+                        <input className={styles.input} type="text" name="surname" placeholder="surname" onChange={handleRegisterChange}/>
                     </div>
                     <div>
-                        <input type="text" name="age" placeholder="age" onChange={handleRegisterChange}/>
+                        <input className={styles.input} type="text" name="age" placeholder="age" onChange={handleRegisterChange}/>
                     </div>
                     <div>
-                        <input type="text" name="email" placeholder="email" onChange={handleRegisterChange}/>
+                        <input className={styles.input} type="text" name="email" placeholder="email" onChange={handleRegisterChange}/>
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="password" onChange={handleRegisterChange}/>
+                        <input className={styles.input} type="password" name="password" placeholder="password" onChange={handleRegisterChange}/>
                     </div>
                     <div>
-                        <input type="submit" value="register" />
+                        <input className={`${styles.submit} ${styles.input}`} type="submit" value="register" />
                     </div>
                 </form>
             </div>

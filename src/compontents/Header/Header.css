@@ -44,3 +44,7 @@ img {
 .link_style, .link_style svg {
   display: inline;
 }
+
+.menu-item {
+  margin-bottom: 0.3em;
+}
