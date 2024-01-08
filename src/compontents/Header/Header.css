@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.col {
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+}
+
 img {
   width: 125px;
   height: 125px;

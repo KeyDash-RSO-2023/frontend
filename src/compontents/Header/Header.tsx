@@ -11,14 +11,15 @@ const Header = () => {
           <p className="title">KeyDash</p>
         </Link>
       </div>
-      <div className="col">
-        <div className="row">
-          <div className="container profile">
-            <Link to="/frontend/profile/1" className="link_style">Profile</Link>
-          </div>
-          <div className="container about">
-            <Link to="/frontend/about" className="link_style">About</Link>
-          </div>
+      <div>
+        <div className="profile float-right">
+          <Link to="/frontend/profile/1" className="link_style">Profile</Link>
+        </div>
+        <div className="about">
+          <Link to="/frontend/about" className="link_style">About</Link>
+        </div>
+        <div>
+          <Link to="/frontend/login" className="link_style">Logout</Link>
         </div>
       </div>
     </div>
