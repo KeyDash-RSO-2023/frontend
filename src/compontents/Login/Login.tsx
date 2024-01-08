@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { login, register } from "../../services/login";
+import { useAuth } from '../AuthContext/AuthContext';
 
 import "./Login.css";
 
@@ -9,6 +10,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [registerData, setRegisterData] = useState({ name: '', surname: '', age: '', email: '', password: '' });
+  const [ isLoggedIn, setIsLoggedIn ] = useAuth();
+
 
   const navigate = useNavigate();
 
@@ -32,6 +35,7 @@ const Login = () => {
       setError('Wrong credentials');
     }
 
+    setIsLoggedIn(true);
     setLoading(false);
   };
 
@@ -48,6 +52,7 @@ const Login = () => {
       setError('Wrong credentials');
     }
 
+    setIsLoggedIn(true);
     setLoading(false);
   };
 

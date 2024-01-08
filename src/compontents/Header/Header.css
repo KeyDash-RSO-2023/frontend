@@ -28,6 +28,8 @@ img {
 
 .profile {
   color: #cfcec3;
+  display: flex;
+  align-items: center;
 }
 
 .about {
@@ -37,4 +39,8 @@ img {
 .link_style {
   text-decoration: none;
   color: #cfcec3;
+}
+
+.link_style, .link_style svg {
+  display: inline;
 }
