@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchUser } from "../../services/fetchUser";
 import { useParams } from "react-router-dom";
 
@@ -49,7 +49,7 @@ const Profile = () => {
         <div>
           <p>Email: {data.email}</p>
         </div>
-      </div>      
+      </div>
     </div>
   );
 };
