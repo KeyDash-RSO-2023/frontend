@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.col {
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+}
+
 img {
   width: 125px;
   height: 125px;
@@ -23,6 +28,8 @@ img {
 
 .profile {
   color: #cfcec3;
+  display: flex;
+  align-items: center;
 }
 
 .about {
@@ -32,4 +39,12 @@ img {
 .link_style {
   text-decoration: none;
   color: #cfcec3;
+}
+
+.link_style, .link_style svg {
+  display: inline;
+}
+
+.menu-item {
+  margin-bottom: 0.3em;
 }
