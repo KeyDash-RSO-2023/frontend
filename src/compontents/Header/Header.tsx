@@ -20,7 +20,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("session");
     setSession(null);
-    navigate("/frontend/login");
+    navigate("/login");
     setIsLoggedIn(false);
   };
 
@@ -35,26 +35,26 @@ const Header = () => {
       <div>
         {isLoggedIn && (
           <div className="profile menu-item">
-            <Link to="/frontend/profile" className="link_style">
+            <Link to="/profile" className="link_style">
               <FontAwesomeIcon icon={faUser} /> Profile
             </Link>
           </div>
         )}
 
         <div className="about menu-item">
-          <Link to="/frontend/about" className="link_style">
+          <Link to="/about" className="link_style">
             <FontAwesomeIcon icon={faInfoCircle} /> About
           </Link>
         </div>
         {isLoggedIn ? (
           <div className="logout menu-item" onClick={handleLogout}>
-            <Link to="/frontend/login" className="link_style">
+            <Link to="/login" className="link_style">
               <FontAwesomeIcon icon={faSignOutAlt} /> Logout
             </Link>
           </div>
         ) : (
           <div className="login menu-item">
-            <Link to="/frontend/login" className="link_style">
+            <Link to="/login" className="link_style">
               <FontAwesomeIcon icon={faSignInAlt} /> Login
             </Link>
           </div>
