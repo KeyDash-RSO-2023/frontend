@@ -36,21 +36,19 @@ const Profile = () => {
   return (
     <div className="profile-data">
       <h1>Profile</h1>
-      <div>
-        <div>
-          <p>Name: {data.name}</p>
-        </div>
-        <div>
-          <p>Surname: {data.surname}</p>
-        </div>
-        <div>
-          <p>Age: {data.age}</p>
-        </div>
-        <div>
-          <p>Email: {data.email}</p>
-        </div>
+      <div className="content">
+          <div className="user-info">
+              <p>Name: {data.name}</p>
+              <p>Surname: {data.surname}</p>
+              <p>Age: {data.age}</p>
+              <p>Email: {data.email}</p>
+          </div>
+          <div className="hello-text">
+              <img src={`https://api.multiavatar.com/${data.name}${data.surname}.svg`} alt="profile photo" />
+          </div>
       </div>
-    </div>
+  </div>
+
   );
 };
 
