@@ -62,7 +62,7 @@ const Typing = () => {
     setGameState,
     userInput,
     setUserInput,
-    textToType,
+    typingSession,
     incorrectIndices,
     setIncorrectIndices,
   } = useContext(AppContext);
@@ -132,11 +132,15 @@ const Typing = () => {
         setGameState(GameState.PLAY);
       }
 
+      if (typingSession === undefined) return;
+
       const input = e.target.value;
       const lastCharIndex = input.length - 1;
       let correctedInput = input;
 
       const newIncorrectIndices = new Set(incorrectIndices);
+      const textToType = typingSession.textToType;
+
       if (input[lastCharIndex] === textToType[lastCharIndex]) {
         newIncorrectIndices.delete(lastCharIndex);
       } else {
@@ -160,7 +164,7 @@ const Typing = () => {
     [
       gameState,
       incorrectIndices,
-      textToType,
+      typingSession,
       setIncorrectIndices,
       setUserInput,
       userInput.length,
@@ -173,7 +177,7 @@ const Typing = () => {
 
   // Function to render text with highlighting
   const renderTextToType = useCallback(() => {
-    return Array.from(textToType).map((char, index) => (
+    return Array.from(typingSession.textToType).map((char, index) => (
       <span
         key={index}
         className={
@@ -187,13 +191,13 @@ const Typing = () => {
         {char}
       </span>
     ));
-  }, [textToType, userInput, incorrectIndices]); // Added userInput and incorrectIndices as dependencies
+  }, [typingSession, userInput, incorrectIndices]); // Added userInput and incorrectIndices as dependencies
 
   // Effect to update rendered text when userInput or textToType changes
   useEffect(() => {
     const a = renderTextToType();
     setRenderedText(a);
-  }, [userInput, textToType, renderTextToType]); // Effect dependencies are correct
+  }, [userInput, typingSession, renderTextToType]); // Effect dependencies are correct
 
   return (
     <div className="textsContainer">

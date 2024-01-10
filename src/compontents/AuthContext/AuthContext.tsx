@@ -1,10 +1,10 @@
 // AuthContext.js
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [session, setSession] = useState(JSON.parse(localStorage.getItem('session')));
+  const [session] = useState(JSON.parse(localStorage.getItem("session")));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   }, [session]);
 
   return (
-    <AuthContext.Provider value={[ isLoggedIn, setIsLoggedIn ]}>
+    <AuthContext.Provider value={[isLoggedIn, setIsLoggedIn]}>
       {children}
     </AuthContext.Provider>
   );

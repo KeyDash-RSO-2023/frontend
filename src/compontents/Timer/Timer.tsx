@@ -3,11 +3,11 @@ import "./Timer.css";
 import { AppContext } from "../AppProvider/AppProvider";
 
 const Timer = () => {
-  const appContext = useContext(AppContext);
+  const { timerValue } = useContext(AppContext);
 
   return (
     <div>
-      <p className="timer">{appContext.timerValue} s</p>
+      <p className="timer">{timerValue} s</p>
     </div>
   );
 };

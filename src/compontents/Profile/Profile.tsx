@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchUser } from "../../services/fetchUser";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import "./Profile.css";
 
@@ -8,7 +8,7 @@ const Profile = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [session, setSession] = useState(JSON.parse(localStorage.getItem('session')));
+  const [session] = useState(JSON.parse(localStorage.getItem("session")));
 
   useEffect(() => {
     const getData = async () => {

@@ -10,14 +10,22 @@
   align-items: center;
 }
 
+.header-left a {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+}
+
 .col {
   display: flex;
   flex-direction: column; /* Align children vertically */
 }
 
 img {
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
 }
 
 .title {
@@ -41,7 +49,8 @@ img {
   color: #cfcec3;
 }
 
-.link_style, .link_style svg {
+.link_style,
+.link_style svg {
   display: inline;
 }
 

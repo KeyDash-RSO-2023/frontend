@@ -8,6 +8,11 @@ export enum GameState {
   GAME_OVER = "game_over",
 }
 
+interface TypingSession {
+  typingSessionId?: number;
+  textToType: string;
+}
+
 // Define the shape of the context for better type support.
 interface AppContextType {
   gameState: GameState;
@@ -18,12 +23,18 @@ interface AppContextType {
   setTimerValue: (value: number | ((prevValue: number) => number)) => void;
   wpm: number;
   setWpm: (value: number) => void;
-  textToType: string;
-  setTextToType: (text: string) => void;
+  typingSession: TypingSession;
+  setTypingSession: (typingSession: TypingSession) => void;
   userInput: string;
   setUserInput: (input: string) => void;
   incorrectIndices: Set<number>;
   setIncorrectIndices: (indices: Set<number>) => void;
+  punctuationOption: boolean;
+  setPunctuationOption: (value: boolean) => void;
+  languageOption: string;
+  setLanguageOption: (value: string) => void;
+  timeOption: number;
+  setTimeOption: (value: number) => void;
 }
 
 // Initializing the context with default values.
@@ -36,12 +47,19 @@ export const AppContext = createContext<AppContextType>({
   setTimerValue: () => {},
   wpm: 0,
   setWpm: () => {},
-  textToType: "",
-  setTextToType: () => {},
+  typingSession: undefined,
+  setTypingSession: () => {},
   userInput: "",
   setUserInput: () => {},
   incorrectIndices: new Set(),
   setIncorrectIndices: () => {},
+  punctuationOption: false,
+  setPunctuationOption: () => {},
+  languageOption: "en",
+  setLanguageOption: () => {},
+
+  timeOption: 60,
+  setTimeOption: () => {},
 });
 
 interface AppProviderProps {
@@ -55,14 +73,20 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [timeIntervalId, setTimeIntervalId] = useState<number | undefined>(
     undefined
   );
-  const [timerValue, setTimerValue] = useState<number>(100);
+  const [timerValue, setTimerValue] = useState<number>(60);
   const [wpm, setWpm] = useState<number>(0);
-  const [textToType, setTextToType] = useState<string>("");
+  const [typingSession, setTypingSession] = useState<TypingSession>({
+    textToType: "",
+  });
   // Consider truncating the default text or loading it from a resource.
   const [userInput, setUserInput] = useState<string>("");
   const [incorrectIndices, setIncorrectIndices] = useState<Set<number>>(
     new Set()
   );
+
+  const [punctuationOption, setPunctuationOption] = useState<boolean>(false);
+  const [languageOption, setLanguageOption] = useState<string>("en");
+  const [timeOption, setTimeOption] = useState<number>(60);
 
   // Context value that will be provided to the children.
   const contextValue = {
@@ -76,10 +100,16 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     setWpm,
     userInput,
     setUserInput,
-    textToType,
-    setTextToType,
+    typingSession,
+    setTypingSession,
     incorrectIndices,
     setIncorrectIndices,
+    punctuationOption,
+    setPunctuationOption,
+    languageOption,
+    setLanguageOption,
+    timeOption,
+    setTimeOption,
   };
 
   // Render the context provider with the contextValue applied.

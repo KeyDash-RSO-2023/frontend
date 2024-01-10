@@ -1,0 +1,65 @@
+.toolbar {
+  position: relative;
+  width: 65%;
+  height: 40px;
+  background-color: #2c2e31;
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #57595c;
+}
+
+.toolbar img {
+  width: 20px;
+}
+
+.toolbar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.toolbar div span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.toolbar div span span {
+  cursor: pointer;
+  line-height: 1;
+}
+
+.active {
+  color: #e1b214;
+}
+
+/* .toolbar .punctuation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+  flex: 1;
+}
+
+.toolbar .language {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 25px;
+  flex: 1;
+}
+
+.toolbar .time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex: 1; */
