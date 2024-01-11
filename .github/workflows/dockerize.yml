@@ -1,10 +1,10 @@
-name: build with Maven and package as Docker image
+name: build web app
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
