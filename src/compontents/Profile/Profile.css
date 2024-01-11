@@ -1,3 +1,14 @@
 .profile-data {
     color: #a5a49a;
 }
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-info, .hello-text {
+    flex: 1; 
+    margin: 0 10px; 
+}
+

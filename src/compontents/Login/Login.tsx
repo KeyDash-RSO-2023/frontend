@@ -17,6 +17,7 @@ const Login = () => {
     password: "",
   });
   const [isLoggedIn, setIsLoggedIn] = useAuth();
+  console.log(isLoggedIn);
 
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const Login = () => {
 
     if (session) {
       localStorage.setItem("session", JSON.stringify(session));
-      navigate("/frontend/profile");
+      navigate("/profile");
     } else {
       setError("Wrong credentials");
     }
