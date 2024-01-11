@@ -20,6 +20,7 @@ function App() {
             <Route path="/frontend/about" element={<About />} />
             <Route path="/frontend/login" element={<Login />} />
             <Route path="/frontend/admin" element={<Admin />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </AuthProvider>
       </Router>
