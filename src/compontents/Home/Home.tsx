@@ -118,11 +118,10 @@ const Home = () => {
       // const wordsTyped = (userInput.match(/\S+/g) || []).length;
       const lettersTyped = Math.max(
         0,
-        // (userInput.match(/\S/g) || []).length - incorrectIndices.size // Do not count in spaces
-        userInput.length - incorrectIndices.size
+        userInputRef.current.length - incorrectIndicesRef.current.size
       ); // Not counting spaces
-      const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters
-      const timePassed = 100 - timerValue;
+      const wordsTyped = lettersTyped / 4; // Average English word contains 4.7 letters
+      const timePassed = timeOption - timerValue;
       const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
       setWpm(wpm);
     }
