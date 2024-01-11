@@ -141,21 +141,29 @@ const Typing = () => {
       const newIncorrectIndices = new Set(incorrectIndices);
       const textToType = typingSession.textToType;
 
-      if (input[lastCharIndex] === textToType[lastCharIndex]) {
-        newIncorrectIndices.delete(lastCharIndex);
+      // Check if a character was deleted
+      if (input.length < userInput.length) {
+        // Handle deletion: remove the last index from incorrectIndices if it's there
+        newIncorrectIndices.delete(userInput.length - 1);
       } else {
-        correctedInput = replaceAt(
-          correctedInput,
-          lastCharIndex,
-          textToType[lastCharIndex]
-        );
-        newIncorrectIndices.add(lastCharIndex);
+        // Handle new input
+        if (input[lastCharIndex] !== textToType[lastCharIndex]) {
+          // Add index to incorrectIndices if the character is wrong
+          newIncorrectIndices.add(lastCharIndex);
+        }
       }
+
+      // Correct the input based on incorrectIndices
+      newIncorrectIndices.forEach((index) => {
+        if (index < correctedInput.length) {
+          correctedInput = replaceAt(correctedInput, index, textToType[index]);
+        }
+      });
 
       setIncorrectIndices(newIncorrectIndices);
       setUserInput(correctedInput);
 
-      // Check if all the text to typed was typed
+      // Check if all the text to type was typed
       if (userInput.length == textToType.length - 1) {
         setGameState(GameState.GAME_OVER);
         console.log("Game over");
