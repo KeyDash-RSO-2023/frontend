@@ -34,4 +34,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/users:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
