@@ -2,7 +2,7 @@
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
 // const USERS_URL = import.meta.env.VITE_USERS_API_URL;
-const USERS_URL = "http://20.240.34.248/users/v1/users/";
+const USERS_URL = "http://20.240.34.248/users/v1/";
 
 export const login = async (requestData) => {
   console.log("read USERS_URL", USERS_URL);
@@ -28,7 +28,7 @@ export const login = async (requestData) => {
 
 export const register = async (requestData) => {
   try {
-    const response = await fetch(USERS_URL, {
+    const response = await fetch(USERS_URL + "users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
