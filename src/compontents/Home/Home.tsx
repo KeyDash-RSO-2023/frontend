@@ -8,6 +8,7 @@ import Retry from "../Retry/Retry";
 import {
   endTypingSession,
   getNewTypingSession,
+  updateTypingSession,
 } from "../../services/typingSession";
 import "./Home.css";
 import Toolbar from "../Toolbar/Toolbar";
@@ -18,6 +19,7 @@ const Home = () => {
     setGameState,
     timerValue,
     setTimerValue,
+    wpm,
     setWpm,
     userInput,
     setUserInput,
@@ -33,6 +35,22 @@ const Home = () => {
   const intervalIdRef = useRef(null);
   const sessionInitialized = useRef(false);
 
+  const wpmRef = useRef(wpm);
+  const userInputRef = useRef(userInput);
+  const incorrectIndicesRef = useRef(incorrectIndices);
+
+  useEffect(() => {
+    wpmRef.current = wpm;
+  }, [wpm]);
+
+  useEffect(() => {
+    userInputRef.current = userInput;
+  }, [userInput]);
+
+  useEffect(() => {
+    incorrectIndicesRef.current = incorrectIndices;
+  }, [incorrectIndices]);
+
   useEffect(() => {
     if (gameState === GameState.PLAY && !intervalIdRef.current) {
       console.log(typingSession.typingSessionId);
@@ -46,6 +64,16 @@ const Home = () => {
             // If you want to stop the timer, return the current state instead of decrementing
             return currentTimerValue; // assuming you want to return the current value to stop the timer
           } else {
+            if (currentTimerValue % 5 == 0) {
+              console.log(wpmRef.current);
+              updateTypingSession(
+                typingSession.typingSessionId,
+                wpmRef.current,
+                1 -
+                  incorrectIndicesRef.current.size / userInputRef.current.length
+              );
+            }
+
             // Otherwise, decrement the timer
             return currentTimerValue - 1;
           }

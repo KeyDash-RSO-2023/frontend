@@ -24,12 +24,12 @@
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 65px;
+  height: 65px;
 }
 
 .title {
-  font-size: 30px;
+  font-size: 25px;
   color: #cfcec3;
   font-weight: bold;
 }

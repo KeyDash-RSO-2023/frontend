@@ -29,7 +29,7 @@ const Header = () => {
       <div className="header-left">
         <Link to="/frontend" className="link_style">
           <img src={logo} />
-          <p className="title">KeyDash</p>
+          <p className="title">keydash</p>
         </Link>
       </div>
       <div>
@@ -41,11 +41,11 @@ const Header = () => {
           </div>
         )}
 
-        <div className="about menu-item">
+        {/* <div className="about menu-item">
           <Link to="/frontend/about" className="link_style">
             <FontAwesomeIcon icon={faInfoCircle} /> About
           </Link>
-        </div>
+        </div> */}
         {isLoggedIn ? (
           <div className="logout menu-item" onClick={handleLogout}>
             <Link to="/frontend/login" className="link_style">

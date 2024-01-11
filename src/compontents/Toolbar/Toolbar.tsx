@@ -19,12 +19,18 @@ const Toolbar = () => {
     setPunctuationOption(!punctuationOption);
   };
 
-  const handleLanguageClick = (e: any) => {
-    setLanguageOption(e.target.innerText);
+  const handleLanguageClick = (
+    e: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    const target = e.target as HTMLElement; // Asserting the target is an HTMLElement
+    setLanguageOption(target.innerText);
   };
 
-  const handleTimeClick = (e: any) => {
-    setTimeOption(parseInt(e.target.innerText));
+  const handleTimeClick = (
+    e: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    const target = e.target as HTMLElement; // Asserting the target is an HTMLElement
+    setTimeOption(parseInt(target.innerText));
   };
 
   return (
@@ -55,12 +61,12 @@ const Toolbar = () => {
           >
             sl
           </span>
-          <span
+          {/* <span
             className={languageOption == "de" ? "active" : ""}
             onClick={handleLanguageClick}
           >
             de
-          </span>
+          </span> */}
         </span>
       </div>
       <div className="time">

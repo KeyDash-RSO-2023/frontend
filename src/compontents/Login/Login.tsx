@@ -104,7 +104,7 @@ const Login = () => {
         </div>
 
         <div className={`${styles.col} ${styles.colmd4}`}>
-          <form onSubmit={handleRegister}>
+          <form onSubmit={handleRegister} style={{ alignItems: "end" }}>
             <div className={styles.title}>register</div>
             <div>
               <input

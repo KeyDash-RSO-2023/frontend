@@ -3,10 +3,10 @@ import "./Wpm.css";
 import { AppContext } from "../AppProvider/AppProvider";
 
 const Wpm = () => {
-  const appContext = useContext(AppContext);
+  const { wpm } = useContext(AppContext);
   return (
     <div>
-      <p className="wpm">{Math.round(appContext.wpm)} wpm</p>
+      <p className="wpm">{Math.round(wpm)} wpm</p>
     </div>
   );
 };

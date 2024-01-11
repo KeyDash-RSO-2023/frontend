@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 18px;
 }
 
 .toolbar div span span {
@@ -38,28 +38,3 @@
 .active {
   color: #e1b214;
 }
-
-/* .toolbar .punctuation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 5px;
-  flex: 1;
-}
-
-.toolbar .language {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 25px;
-  flex: 1;
-}
-
-.toolbar .time {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  flex: 1; */

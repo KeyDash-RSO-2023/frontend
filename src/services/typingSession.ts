@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/v1/gameplay";
+const BASE_URL = "http://localhost:8081/v1/gameplay";
 
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
@@ -19,6 +19,36 @@ export const getNewTypingSession = async (
   } catch (error) {
     console.error("Fetching text failed", error);
     return ""; // Return a default string in case of an error
+  }
+};
+
+export const updateTypingSession = async (
+  typingSessionId: number,
+  wpm: number,
+  accuracy: number
+) => {
+  const body = {
+    currentWpm: wpm,
+    accuracy: accuracy,
+  };
+  try {
+    const response = await fetch(`${BASE_URL}/update/${typingSessionId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const endedSession = await response.json();
+    return endedSession;
+  } catch (error) {
+    console.error("Error updating typing session", error);
+    return null; // Return null or handle the error as appropriate
   }
 };
 
