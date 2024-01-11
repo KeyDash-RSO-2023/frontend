@@ -17,6 +17,13 @@ spec:
                 name: frontend-service
                 port:
                   number: 80
+          - path: /gameplay(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: gameplay-service
+                port:
+                  number: 8080
           - path: /generator(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -31,6 +38,13 @@ spec:
                 name: users-service
                 port:
                   number: 8080
+          - path: /reports(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: reports-service
+                port:
+                  number: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -38,7 +52,7 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: frontend-deployment
+    app: frontend
   ports:
     - protocol: TCP
       port: 80
@@ -47,10 +61,22 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: gameplay-service
+spec:
+  selector:
+    app: gameplay
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: generator-service
 spec:
   selector:
-    app: generator-deployment
+    app: generator
   ports:
     - protocol: TCP
       port: 8080
@@ -62,8 +88,34 @@ metadata:
   name: users-service
 spec:
   selector:
-    app: users-deployment
+    app: users
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reports-service
+spec:
+  selector:
+    app: reports
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+# ---
+# Create users loadbalancer
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: users-loadbalancer
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: users
+#   ports:
+#     - protocol: TCP
+#       port: 8080
+#       targetPort: 8080

@@ -15,11 +15,11 @@ function App() {
         <AuthProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/frontend" element={<Home />} />
+            <Route path="/frontend/profile" element={<Profile />} />
+            <Route path="/frontend/about" element={<About />} />
+            <Route path="/frontend/login" element={<Login />} />
+            <Route path="/frontend/admin" element={<Admin />} />
           </Routes>
         </AuthProvider>
       </Router>

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8081/v1/gameplay";
+const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
 
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 

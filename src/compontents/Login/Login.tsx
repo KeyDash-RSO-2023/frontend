@@ -53,7 +53,7 @@ const Login = () => {
 
     if (session) {
       localStorage.setItem("session", JSON.stringify(session));
-      navigate("/frontend/profile");
+      navigate("/profile");
     } else {
       setError("Wrong credentials");
     }

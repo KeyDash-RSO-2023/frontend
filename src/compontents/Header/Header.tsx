@@ -19,14 +19,14 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("session");
     setSession(null);
-    navigate("/login");
+    navigate("/frontend/login");
     setIsLoggedIn(false);
   };
 
   return (
     <div className="header">
       <div className="header-left">
-        <Link to="/frontend" className="link_style">
+        <Link to="/" className="link_style">
           <img src={logo} />
           <p className="title">keydash</p>
         </Link>

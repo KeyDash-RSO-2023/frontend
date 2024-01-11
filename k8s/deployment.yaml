@@ -1,23 +1,145 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keydash
+  name: frontend-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keydash-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: keydash-frontend
+        app: frontend
     spec:
       containers:
-        - name: keydash-frontend
+        - name: frontend
           imagePullPolicy: Always
-          image: kurtaga/keydash-frontend:v109
-          # env:
-          #   - name: REACT_APP_BACKEND_URL
-          #     value: "http://generator-service:80/get"
+          image: kurtaga/frontend:latest
           ports:
             - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gameplay-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gameplay
+  template:
+    metadata:
+      labels:
+        app: gameplay
+    spec:
+      containers:
+        - image: kurtaga/gameplay:2024-01-11-04-44-39
+          name: gameplay
+          imagePullPolicy: Always
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/gameplay?user=tilenmiklavic&password=U65pDcNzgwuj&sslmode=require
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: tilenmiklavic
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              value: U65pDcNzgwuj
+          ports:
+            - containerPort: 8080
+              name: server
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health/live
+          #     port: server
+          #   initialDelaySeconds: 20
+          #   periodSeconds: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health/ready
+          #     port: server
+          #   initialDelaySeconds: 20
+          #   periodSeconds: 3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generator-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: generator
+  template:
+    metadata:
+      labels:
+        app: generator
+    spec:
+      containers:
+        - name: generator
+          image: kurtaga/generator-ms:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - image: tmiklavic/users:latest
+          name: users
+          imagePullPolicy: Always
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/users?user=tilenmiklavic&password=U65pDcNzgwuj&sslmode=require
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: tilenmiklavic
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              value: U65pDcNzgwuj
+          ports:
+            - containerPort: 8080
+              name: server
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reports-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reports
+  template:
+    metadata:
+      labels:
+        app: reports
+    spec:
+      containers:
+        - name: reports
+          image: tmiklavic/reports:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
