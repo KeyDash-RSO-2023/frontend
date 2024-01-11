@@ -129,7 +129,7 @@ const Home = () => {
 
   return (
     <>
-      <Toolbar />
+      {gameState != GameState.PLAY && <Toolbar />}
       <Wpm />
       <Timer />
       <Typing key={resetKey} />

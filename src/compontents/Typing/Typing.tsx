@@ -133,8 +133,8 @@ const Typing = () => {
       }
 
       if (typingSession === undefined) return;
-
       const input = e.target.value;
+      console.log(input);
       const lastCharIndex = input.length - 1;
       let correctedInput = input;
 
