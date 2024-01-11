@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header-left">
-        <Link to="/" className="link_style">
+        <Link to="/frontend" className="link_style">
           <img src={logo} />
           <p className="title">keydash</p>
         </Link>
@@ -34,7 +34,7 @@ const Header = () => {
       <div>
         {isLoggedIn && (
           <div className="profile menu-item">
-            <Link to="/profile" className="link_style">
+            <Link to="/frontend/profile" className="link_style">
               <FontAwesomeIcon icon={faUser} /> Profile
             </Link>
           </div>
@@ -48,13 +48,13 @@ const Header = () => {
         </div> */}
         {isLoggedIn ? (
           <div className="logout menu-item" onClick={handleLogout}>
-            <Link to="/login" className="link_style">
+            <Link to="/frontend/login" className="link_style">
               <FontAwesomeIcon icon={faSignOutAlt} /> Logout
             </Link>
           </div>
         ) : (
           <div className="login menu-item">
-            <Link to="/login" className="link_style">
+            <Link to="/frontend/login" className="link_style">
               <FontAwesomeIcon icon={faSignInAlt} /> Login
             </Link>
           </div>
