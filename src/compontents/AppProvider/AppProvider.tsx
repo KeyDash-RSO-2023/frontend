@@ -35,6 +35,8 @@ interface AppContextType {
   setLanguageOption: (value: string) => void;
   timeOption: number;
   setTimeOption: (value: number) => void;
+  wpmHistory: number[];
+  setWpmHistory: (value: number[]) => void;
 }
 
 // Initializing the context with default values.
@@ -57,9 +59,10 @@ export const AppContext = createContext<AppContextType>({
   setPunctuationOption: () => {},
   languageOption: "en",
   setLanguageOption: () => {},
-
   timeOption: 60,
   setTimeOption: () => {},
+  wpmHistory: [],
+  setWpmHistory: () => {},
 });
 
 interface AppProviderProps {
@@ -88,6 +91,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [languageOption, setLanguageOption] = useState<string>("en");
   const [timeOption, setTimeOption] = useState<number>(60);
 
+  const [wpmHistory, setWpmHistory] = useState<number[]>([]);
+
   // Context value that will be provided to the children.
   const contextValue = {
     gameState,
@@ -110,6 +115,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     setLanguageOption,
     timeOption,
     setTimeOption,
+    wpmHistory,
+    setWpmHistory,
   };
 
   // Render the context provider with the contextValue applied.

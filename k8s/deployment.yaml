@@ -34,7 +34,7 @@ spec:
         app: gameplay
     spec:
       containers:
-        - image: kurtaga/gameplay:2024-01-11-04-44-39
+        - image: kurtaga/gameplay:latest
           name: gameplay
           imagePullPolicy: Always
           env:
@@ -47,12 +47,12 @@ spec:
           ports:
             - containerPort: 8080
               name: server
-          # livenessProbe:
-          #   httpGet:
-          #     path: /health/live
-          #     port: server
-          #   initialDelaySeconds: 20
-          #   periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
           # readinessProbe:
           #   httpGet:
           #     path: /health/ready
@@ -80,6 +80,19 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+              name: server
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
 
 ---
 apiVersion: apps/v1
@@ -143,3 +156,16 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+              name: server
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3

@@ -35,7 +35,7 @@ const Header = () => {
         {isLoggedIn && (
           <div className="profile menu-item">
             <Link to="/frontend/profile" className="link_style">
-              <FontAwesomeIcon icon={faUser} /> Profile
+              <FontAwesomeIcon icon={faUser} /> profile
             </Link>
           </div>
         )}
@@ -49,13 +49,13 @@ const Header = () => {
         {isLoggedIn ? (
           <div className="logout menu-item" onClick={handleLogout}>
             <Link to="/frontend/login" className="link_style">
-              <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+              <FontAwesomeIcon icon={faSignOutAlt} /> logout
             </Link>
           </div>
         ) : (
           <div className="login menu-item">
             <Link to="/frontend/login" className="link_style">
-              <FontAwesomeIcon icon={faSignInAlt} /> Login
+              <FontAwesomeIcon icon={faSignInAlt} /> login
             </Link>
           </div>
         )}

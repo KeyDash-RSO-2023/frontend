@@ -1,7 +1,7 @@
 .container {
   position: relative;
-  margin: 0 auto;
-  width: 90%;
+  margin: 40px auto;
+  width: 85%;
   height: 100%;
 }
 
@@ -64,7 +64,7 @@
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 0.3em;
-  color: #cfcec3;
+  color: #e1b214;
   margin-top: 1em;
 }
 

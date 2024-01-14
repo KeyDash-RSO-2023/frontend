@@ -2,6 +2,14 @@ const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
 
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
+export const getTypingSessionRecords = async (typingSessionId: number) => {
+  const response = await fetch(`${BASE_URL}/${typingSessionId}`);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const records = await response.json();
+  return records;
+};
 export const getNewTypingSession = async (
   language: string,
   length: number,
