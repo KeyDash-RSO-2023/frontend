@@ -12,6 +12,7 @@ const Statistics = () => {
     incorrectIndices,
     userInput,
     wpmHistory,
+    hacking,
   } = useContext(AppContext);
 
   const wpmHistoryRef = useRef(wpmHistory);
@@ -25,11 +26,13 @@ const Statistics = () => {
       <div className="statistics_column">
         <div className="data">
           <span className="label">wpm</span>
-          <span className="value">{wpm.toFixed(0)}</span>
+          <span className="value">{hacking ? "invalid" : wpm.toFixed(0)}</span>
         </div>
         <div className="data">
           <span className="label">acc</span>
-          <span className="value">{acuraccy.toFixed(0)}%</span>
+          <span className="value">
+            {hacking ? "invalid" : acuraccy.toFixed(0) + "%"}
+          </span>
         </div>
         <div className="data">
           <span className="label">type</span>
@@ -40,7 +43,7 @@ const Statistics = () => {
         </div>
       </div>
 
-      <Graph data={wpmHistoryRef.current} />
+      <Graph data={wpmHistoryRef.current} type="ts" color="#d15252" />
     </div>
   );
 };

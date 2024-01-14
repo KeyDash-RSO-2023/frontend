@@ -37,6 +37,8 @@ interface AppContextType {
   setTimeOption: (value: number) => void;
   wpmHistory: number[];
   setWpmHistory: (value: number[]) => void;
+  hacking: boolean;
+  setHacking: (value: boolean) => void;
 }
 
 // Initializing the context with default values.
@@ -63,6 +65,8 @@ export const AppContext = createContext<AppContextType>({
   setTimeOption: () => {},
   wpmHistory: [],
   setWpmHistory: () => {},
+  hacking: false,
+  setHacking: () => {},
 });
 
 interface AppProviderProps {
@@ -93,6 +97,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
   const [wpmHistory, setWpmHistory] = useState<number[]>([]);
 
+  const [hacking, setHacking] = useState<boolean>(false);
+
   // Context value that will be provided to the children.
   const contextValue = {
     gameState,
@@ -117,6 +123,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     setTimeOption,
     wpmHistory,
     setWpmHistory,
+    hacking,
+    setHacking,
   };
 
   // Render the context provider with the contextValue applied.

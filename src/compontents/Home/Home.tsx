@@ -13,6 +13,7 @@ import {
 import "./Home.css";
 import Toolbar from "../Toolbar/Toolbar";
 import Statistics from "../Statistics/Statistics";
+import Toast from "../Toast/Toast";
 
 const Home = () => {
   const {
@@ -33,6 +34,8 @@ const Home = () => {
     timeOption,
     wpmHistory,
     setWpmHistory,
+    hacking,
+    setHacking,
   } = useContext(AppContext);
 
   const intervalIdRef = useRef(null);
@@ -68,15 +71,23 @@ const Home = () => {
           if (currentTimerValue >= 0) {
             if (currentTimerValue % 5 == 0) {
               const newWpmHistory = [...wpmHistoryRef.current, wpmRef.current];
-              console.log("newWpmHistory: ", newWpmHistory);
               setWpmHistory(newWpmHistory);
 
-              updateTypingSession(
+              const updateResponse = updateTypingSession(
                 typingSession.typingSessionId,
                 wpmRef.current,
                 1 -
-                  incorrectIndicesRef.current.size / userInputRef.current.length
+                  incorrectIndicesRef.current.size /
+                    userInputRef.current.length,
+                userInputRef.current
               );
+              updateResponse.then((res) => {
+                console.log(res);
+                if (!res) {
+                  console.log("anti hack detected");
+                  setHacking(true);
+                }
+              });
             }
 
             if (currentTimerValue === 0) {
@@ -124,6 +135,7 @@ const Home = () => {
     setInterval(undefined);
     setIncorrectIndices(new Set());
     setWpmHistory([]);
+    setHacking(false);
     sessionInitialized.current = false;
   };
 
@@ -135,7 +147,7 @@ const Home = () => {
         0,
         userInputRef.current.length - incorrectIndicesRef.current.size
       ); // Not counting spaces
-      const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters
+      const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters, must match the value in the backend
       const timePassed = timeOption - timerValue;
       const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
       setWpm(wpm);
@@ -144,6 +156,7 @@ const Home = () => {
 
   return (
     <>
+      {hacking && gameState == GameState.PLAY && <Toast />}
       {gameState != GameState.GAME_OVER && (
         <>
           {gameState == GameState.READY && <Toolbar />}

@@ -15,9 +15,13 @@ export const getNewTypingSession = async (
   length: number,
   punctuation: boolean
 ) => {
+  const wordsPerSecond = 5;
+
   try {
     const response = await fetch(
-      `${BASE_URL}/new?language=${language}&length=${length}&punctuation=${punctuation}`
+      `${BASE_URL}/new?language=${language}&length=${
+        length * wordsPerSecond
+      }&punctuation=${punctuation}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -33,22 +37,32 @@ export const getNewTypingSession = async (
 export const updateTypingSession = async (
   typingSessionId: number,
   wpm: number,
-  accuracy: number
+  accuracy: number,
+  typedText: string
 ) => {
   const body = {
     currentWpm: wpm,
     accuracy: accuracy,
+    typedText: typedText,
   };
   try {
-    const response = await fetch(`${BASE_URL}/update/${typingSessionId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+    const response: Response = await fetch(
+      `${BASE_URL}/update/${typingSessionId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    );
 
-    if (!response.ok) {
+    // Bad Request
+    if (response.status === 400) {
+      return false;
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else if (!response.ok) {
+      return false;
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 

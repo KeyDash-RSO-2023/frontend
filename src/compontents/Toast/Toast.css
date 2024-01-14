@@ -1,0 +1,17 @@
+.toast {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 25px auto;
+  background-color: #d15252;
+  padding: 10px 0px;
+  border-radius: 10px;
+  width: 410px;
+  /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cfcec3;
+  font-size: 13px;
+  font-weight: 500;
+}
