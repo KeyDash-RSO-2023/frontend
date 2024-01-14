@@ -7,13 +7,13 @@ interface GraphProps {
 }
 const Graph: React.FC<GraphProps> = ({ data }) => {
   const mappedData = data.map((wpm, index) => {
-    return { name: 5 * index + "s", wpm: wpm.toFixed(0) };
+    return { name: 5 * index + "s", wpm: Number(wpm.toFixed(0)) };
   });
   console.log(data);
   console.log(mappedData);
 
   return (
-    <LineChart width={500} height={225} data={mappedData} className="graph">
+    <LineChart width={550} height={225} data={mappedData} className="graph">
       {/* <CartesianGrid strokeDasharray="0 0" /> */}
       <XAxis dataKey="name" />
       <YAxis />
