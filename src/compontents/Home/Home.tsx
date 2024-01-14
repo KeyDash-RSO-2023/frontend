@@ -147,7 +147,7 @@ const Home = () => {
         0,
         userInputRef.current.length - incorrectIndicesRef.current.size
       ); // Not counting spaces
-      const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters, must match the value in the backend
+      const wordsTyped = lettersTyped / 1.7; // Average English word contains 4.7 letters, must match the value in the backend
       const timePassed = timeOption - timerValue;
       const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
       setWpm(wpm);
