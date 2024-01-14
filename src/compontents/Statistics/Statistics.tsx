@@ -43,7 +43,11 @@ const Statistics = () => {
         </div>
       </div>
 
-      <Graph data={wpmHistoryRef.current} type="ts" color="#d15252" />
+      <Graph
+        data={wpmHistoryRef.current}
+        type="ts"
+        color={hacking ? "#d15252" : null}
+      />
     </div>
   );
 };

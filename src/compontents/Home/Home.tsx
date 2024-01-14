@@ -45,6 +45,7 @@ const Home = () => {
   const userInputRef = useRef(userInput);
   const incorrectIndicesRef = useRef(incorrectIndices);
   const wpmHistoryRef = useRef(wpmHistory);
+  const timerValueRef = useRef(timerValue);
 
   useEffect(() => {
     wpmRef.current = wpm;
@@ -63,15 +64,43 @@ const Home = () => {
   }, [wpmHistory]);
 
   useEffect(() => {
+    timerValueRef.current = timerValue;
+  }, [timerValue]);
+
+  useEffect(() => {
     if (gameState === GameState.PLAY && !intervalIdRef.current) {
-      console.log(typingSession.typingSessionId);
+      console.log(
+        "New typing session wit id: " + typingSession.typingSessionId
+      );
 
       intervalIdRef.current = setInterval(() => {
+        // const wordsTyped = (userInput.match(/\S+/g) || []).length;
+        const lettersTyped = Math.max(
+          0,
+          userInputRef.current.length - incorrectIndicesRef.current.size
+        ); // Not counting spaces
+        const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters, must match the value in the backend
+        const timePassed = timeOption - timerValueRef.current;
+        const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
+        wpmRef.current = wpm;
+        setWpm(wpm);
+        // console.log("update wpm");
+
         setTimerValue((currentTimerValue) => {
           if (currentTimerValue >= 0) {
             if (currentTimerValue % 5 == 0) {
+              // console.log("time passed: " + timePassed);
+              // console.log("characters typed: " + lettersTyped);
+
               const newWpmHistory = [...wpmHistoryRef.current, wpmRef.current];
               setWpmHistory(newWpmHistory);
+              let incorrectTypedText = userInputRef.current;
+              incorrectIndicesRef.current.forEach((index) => {
+                incorrectTypedText =
+                  incorrectTypedText.substring(0, index) +
+                  "@" +
+                  incorrectTypedText.substring(index + 1);
+              });
 
               const updateResponse = updateTypingSession(
                 typingSession.typingSessionId,
@@ -79,12 +108,12 @@ const Home = () => {
                 1 -
                   incorrectIndicesRef.current.size /
                     userInputRef.current.length,
-                userInputRef.current
+                incorrectTypedText
               );
+              // console.log("update response");
               updateResponse.then((res) => {
-                console.log(res);
                 if (!res) {
-                  console.log("anti hack detected");
+                  console.log("Anti-hack detected irregular activity");
                   setHacking(true);
                 }
               });
@@ -140,19 +169,20 @@ const Home = () => {
   };
 
   // Calculate WPM
-  useEffect(() => {
-    if (gameState === GameState.PLAY && timerValue > 0) {
-      // const wordsTyped = (userInput.match(/\S+/g) || []).length;
-      const lettersTyped = Math.max(
-        0,
-        userInputRef.current.length - incorrectIndicesRef.current.size
-      ); // Not counting spaces
-      const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters, must match the value in the backend
-      const timePassed = timeOption - timerValue;
-      const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
-      setWpm(wpm);
-    }
-  }, [timerValue]);
+  // useEffect(() => {
+  //   if (gameState === GameState.PLAY && timerValue > 0) {
+  //     // const wordsTyped = (userInput.match(/\S+/g) || []).length;
+  //     const lettersTyped = Math.max(
+  //       0,
+  //       userInputRef.current.length - incorrectIndicesRef.current.size
+  //     ); // Not counting spaces
+  //     const wordsTyped = lettersTyped / 4.7; // Average English word contains 4.7 letters, must match the value in the backend
+  //     const timePassed = timeOption - timerValue;
+  //     const wpm = timePassed > 0 ? (wordsTyped / timePassed) * 60 : 0;
+  //     setWpm(wpm);
+  //     console.log("update wpm");
+  //   }
+  // }, [timerValue]);
 
   return (
     <>
