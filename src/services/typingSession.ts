@@ -1,5 +1,6 @@
-const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
+// const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
 
+const BASE_URL = import.meta.env.VITE_GAMEPLAY_URL
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
 export const getTypingSessionRecords = async (typingSessionId: number) => {
@@ -75,13 +76,14 @@ export const updateTypingSession = async (
 };
 
 export const endTypingSession = async (typingSessionId, typedText) => {
+  let userId = JSON.parse(localStorage.getItem("session")).userId;
   try {
     const response = await fetch(`${BASE_URL}/end/${typingSessionId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(typedText),
+      body: JSON.stringify({typedText: typedText, userId: userId}),
     });
 
     if (!response.ok) {

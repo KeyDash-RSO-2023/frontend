@@ -3,11 +3,13 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 import "./Graph.css";
 
 interface GraphProps {
-  data: number[];
+  data?: number[];
+  time_data?: wpmTime[];
+  int?: boolean;
   type: "ts" | "profile";
   color?: string;
 }
-const Graph: React.FC<GraphProps> = ({ data, type, color }) => {
+const Graph: React.FC<GraphProps> = ({ data, time_data, int, type, color }) => {
   let mappedData;
 
   if (type == "ts") {
@@ -15,10 +17,13 @@ const Graph: React.FC<GraphProps> = ({ data, type, color }) => {
       return { name: 5 * index + "s", wpm: Number(wpm.toFixed(0)) };
     });
   } else if (type == "profile") {
-    // todo
+    mappedData = time_data.map((record, id) => {
+      if (record.wpm == null) {
+        return { name: record.time, wpm: 0 };
+      }
+      return { name: record.time, wpm: int ? Number(record.wpm.toFixed(0)) : record.wpm };
+    });
   }
-  console.log(data);
-  console.log(mappedData);
 
   return (
     <LineChart width={550} height={225} data={mappedData} className="graph">
@@ -38,3 +43,8 @@ const Graph: React.FC<GraphProps> = ({ data, type, color }) => {
 };
 
 export default Graph;
+
+interface wpmTime {
+  wpm: number;
+  time: number;
+}

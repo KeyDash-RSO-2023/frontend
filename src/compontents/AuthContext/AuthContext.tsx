@@ -8,8 +8,11 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    console.log("session")
     const validUntil = session ? new Date(session.validUntil) : new Date(0);
     const now = new Date();
+
+    console.log(validUntil, now, validUntil > now);
     setIsLoggedIn(validUntil > now);
   }, [session]);
 

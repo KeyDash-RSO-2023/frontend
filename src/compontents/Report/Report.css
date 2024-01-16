@@ -1,0 +1,33 @@
+.graph-container {
+    display: flex;
+    justify-content: space-around; /* Adjust the space between the graphs */
+    align-items: center; /* Aligns the graphs vertically */
+}
+  
+.graph-container > div {
+    flex: 1; /* Each graph container takes equal space */
+}
+
+.graph {
+    /* max-width: 80%; */
+}
+
+.label {
+    font-size: 24px;
+    font-weight: 500;
+    color: #57595c;
+  }
+  
+.value {
+    font-size: 35px;
+    font-weight: 500;
+    color: #e1b214;
+  }
+  
+.data {
+    margin-left: 3rem;
+}
+
+.graph_title {
+    margin-left: 3rem;
+}

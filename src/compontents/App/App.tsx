@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import Login from "../Login/Login";
 import { AuthProvider } from "../AuthContext/AuthContext";
 import Admin from "../Admin/Admin";
+import Report from "../Report/Report";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/frontend" element={<Home />} />
             <Route path="/frontend/profile" element={<Profile />} />
+            <Route path="/frontend/report" element={<Report />} />
             <Route path="/frontend/about" element={<About />} />
             <Route path="/frontend/login" element={<Login />} />
             <Route path="/frontend/admin" element={<Admin />} />

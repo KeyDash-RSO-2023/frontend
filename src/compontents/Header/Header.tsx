@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignInAlt,
   faSignOutAlt,
+  faSquarePollVertical,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -36,6 +37,14 @@ const Header = () => {
           <div className="profile menu-item">
             <Link to="/frontend/profile" className="link_style">
               <FontAwesomeIcon icon={faUser} /> profile
+            </Link>
+          </div>
+        )}
+
+        {isLoggedIn && (
+          <div className="report menu-item">
+            <Link to="/frontend/report" className="link_style">
+              <FontAwesomeIcon icon={faSquarePollVertical} /> report
             </Link>
           </div>
         )}
