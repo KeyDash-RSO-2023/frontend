@@ -1,10 +1,10 @@
-// const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
+const BASE_URL = "http://20.240.34.248/gameplay/v1/gameplay";
 
 // const BASE_URL = import.meta.env.VITE_GAMEPLAY_URL
 
 let environment = import.meta.env.MODE
 
-const BASE_URL = environment == "development" ? import.meta.env.VITE_GAMEPLAY_URL : process.env.VITE_GAMEPLAY_URL;
+// const BASE_URL = environment == "development" ? import.meta.env.VITE_GAMEPLAY_URL : process.env.VITE_GAMEPLAY_URL;
 
 console.log(process.env)
 

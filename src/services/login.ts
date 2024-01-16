@@ -5,9 +5,9 @@
 
 let environment = import.meta.env.MODE
 
-const USERS_URL = environment == "development" ? import.meta.env.VITE_USERS_API_URL : process.env.VITE_USERS_API_URL;
+// const USERS_URL = environment == "development" ? import.meta.env.VITE_USERS_API_URL : process.env.VITE_USERS_API_URL;
 
-// const USERS_URL = "http://20.240.34.248/users/v1/users/";
+const USERS_URL = "http://20.240.34.248/users/v1/users/";
 
 export const login = async (requestData) => {
   console.log("read USERS_URL", USERS_URL);
