@@ -1,4 +1,6 @@
-const REPORTS_URL = import.meta.env.VITE_GRAPHQL_REPORTS_API_URL
+let environment = import.meta.env.MODE
+
+const REPORTS_URL = environment == "development" ? import.meta.env.VITE_GRAPHQL_REPORTS_API_URL : process.env.VITE_GRAPHQL_REPORTS_API_URL;
 
 // export const fetchReport = async (id) => {
 //   try {

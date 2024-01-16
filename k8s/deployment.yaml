@@ -39,11 +39,21 @@ spec:
           imagePullPolicy: Always
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/gameplay?user=tilenmiklavic&password=U65pDcNzgwuj&sslmode=require
-            - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: tilenmiklavic
-            - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: U65pDcNzgwuj
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/gameplay?sslmode=require
+            - name: DB_USERNAME
+              value: ${DB_USERNAME}
+            - name: DB_PASSWORD
+              value: ${DB_PASSWORD}
+            - name: VITE_USERS_API_URL
+              value: http://51.12.152.201/users/v1/users/
+            - name: VITE_REPORTS_API_URL
+              value: http://51.12.152.201/v1/reports/
+            - name: VITE_GRAPHQL_REPORTS_API_URL
+              value: http://51.12.152.201/v1/graphql
+            - name: VITE_GENERATOR_API_URL
+              value: http://51.12.152.201/generator/
+            - name: VITE_GAMEPLAY_URL
+              value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
             - containerPort: 8080
               name: server
@@ -78,6 +88,23 @@ spec:
         - name: generator
           image: kurtaga/generator-ms:latest
           imagePullPolicy: Always
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/generator?sslmode=require
+            - name: DB_USERNAME
+              value: ${DB_USERNAME}
+            - name: DB_PASSWORD
+              value: ${DB_PASSWORD}
+            - name: VITE_USERS_API_URL
+              value: http://51.12.152.201/users/v1/users/
+            - name: VITE_REPORTS_API_URL
+              value: http://51.12.152.201/v1/reports/
+            - name: VITE_GRAPHQL_REPORTS_API_URL
+              value: http://51.12.152.201/v1/graphql
+            - name: VITE_GENERATOR_API_URL
+              value: http://51.12.152.201/generator/
+            - name: VITE_GAMEPLAY_URL
+              value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
             - containerPort: 8080
               name: server
@@ -115,11 +142,21 @@ spec:
           imagePullPolicy: Always
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/users?user=tilenmiklavic&password=U65pDcNzgwuj&sslmode=require
-            - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: tilenmiklavic
-            - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: U65pDcNzgwuj
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/users?sslmode=require
+            - name: DB_USERNAME
+              value: ${DB_USERNAME}
+            - name: DB_PASSWORD
+              value: ${DB_PASSWORD}
+            - name: VITE_USERS_API_URL
+              value: http://51.12.152.201/users/v1/users/
+            - name: VITE_REPORTS_API_URL
+              value: http://51.12.152.201/v1/reports/
+            - name: VITE_GRAPHQL_REPORTS_API_URL
+              value: http://51.12.152.201/v1/graphql
+            - name: VITE_GENERATOR_API_URL
+              value: http://51.12.152.201/generator/
+            - name: VITE_GAMEPLAY_URL
+              value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
             - containerPort: 8080
               name: server
@@ -154,6 +191,23 @@ spec:
         - name: reports
           image: tmiklavic/reports:latest
           imagePullPolicy: Always
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/reports?sslmode=require
+            - name: DB_USERNAME
+              value: ${DB_USERNAME}
+            - name: DB_PASSWORD
+              value: ${DB_PASSWORD}
+            - name: VITE_USERS_API_URL
+              value: http://51.12.152.201/users/v1/users/
+            - name: VITE_REPORTS_API_URL
+              value: http://51.12.152.201/v1/reports/
+            - name: VITE_GRAPHQL_REPORTS_API_URL
+              value: http://51.12.152.201/v1/graphql
+            - name: VITE_GENERATOR_API_URL
+              value: http://51.12.152.201/generator/
+            - name: VITE_GAMEPLAY_URL
+              value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
             - containerPort: 8080
               name: server
