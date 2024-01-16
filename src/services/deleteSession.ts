@@ -1,6 +1,6 @@
 // const USERS_URL = import.meta.env.VITE_USERS_API_URL
 
-let environment = import.meta.env.MODE
+// let environment = import.meta.env.MODE
 
 // const USERS_URL = environment == "development" ? import.meta.env.VITE_USERS_API_URL : process.env.VITE_USERS_API_URL;
 

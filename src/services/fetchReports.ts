@@ -1,4 +1,4 @@
-let environment = import.meta.env.MODE
+// let environment = import.meta.env.MODE
 
 // const REPORTS_URL = environment == "development" ? import.meta.env.VITE_GRAPHQL_REPORTS_API_URL : process.env.VITE_GRAPHQL_REPORTS_API_URL;
 const REPORTS_URL = "http://20.240.34.248/users/v1/reports"
