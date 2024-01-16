@@ -6,6 +6,8 @@ let environment = import.meta.env.MODE
 
 const BASE_URL = environment == "development" ? import.meta.env.VITE_GAMEPLAY_URL : process.env.VITE_GAMEPLAY_URL;
 
+console.log("BASE_URL", BASE_URL)
+
 // process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/get";
 
 export const getTypingSessionRecords = async (typingSessionId: number) => {

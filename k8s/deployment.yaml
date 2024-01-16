@@ -51,7 +51,7 @@ spec:
             - name: VITE_GRAPHQL_REPORTS_API_URL
               value: http://51.12.152.201/v1/graphql
             - name: VITE_GENERATOR_API_URL
-              value: http://51.12.152.201/generator/
+              value: http://localhost:8083/generate?punctuation=true
             - name: VITE_GAMEPLAY_URL
               value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
@@ -102,7 +102,7 @@ spec:
             - name: VITE_GRAPHQL_REPORTS_API_URL
               value: http://51.12.152.201/v1/graphql
             - name: VITE_GENERATOR_API_URL
-              value: http://51.12.152.201/generator/
+              value: http://localhost:8083/generate?punctuation=true
             - name: VITE_GAMEPLAY_URL
               value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
@@ -154,7 +154,7 @@ spec:
             - name: VITE_GRAPHQL_REPORTS_API_URL
               value: http://51.12.152.201/v1/graphql
             - name: VITE_GENERATOR_API_URL
-              value: http://51.12.152.201/generator/
+              value: http://localhost:8083/generate?punctuation=true
             - name: VITE_GAMEPLAY_URL
               value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
@@ -205,7 +205,7 @@ spec:
             - name: VITE_GRAPHQL_REPORTS_API_URL
               value: http://51.12.152.201/v1/graphql
             - name: VITE_GENERATOR_API_URL
-              value: http://51.12.152.201/generator/
+              value: http://localhost:8083/generate?punctuation=true
             - name: VITE_GAMEPLAY_URL
               value: http://20.240.34.248/gameplay/v1/gameplay
           ports:
