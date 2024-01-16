@@ -41,9 +41,9 @@ spec:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
               value: jdbc:postgresql://ep-royal-river-45970815.eu-central-1.aws.neon.tech/gameplay?sslmode=require
             - name: DB_USERNAME
-              value: ${DB_USERNAME}
+              value: tilenmiklavic
             - name: DB_PASSWORD
-              value: ${DB_PASSWORD}
+              value: U65pDcNzgwuj
             - name: VITE_USERS_API_URL
               value: http://51.12.152.201/users/v1/users/
             - name: VITE_REPORTS_API_URL
