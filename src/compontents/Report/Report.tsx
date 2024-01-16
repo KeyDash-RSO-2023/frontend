@@ -99,7 +99,7 @@ const Report = () => {
           </span>
           <Graph time_data={acuraccy} int={false} type="profile" />
           <div className="data">
-            <span className="label">games played:</span>
+            <span className="label">avg accuracy:</span>
             <span className="value">
               {avgAccuracy.toFixed(0) + "%"}
             </span>
