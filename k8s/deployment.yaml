@@ -230,13 +230,13 @@ spec:
               name: server
           livenessProbe:
             httpGet:
-              path: /health/live
+              path: /v1/health/livenessState
               port: server
             initialDelaySeconds: 20
             periodSeconds: 3
           readinessProbe:
             httpGet:
-              path: /health/ready
+              path: /v1/health/readinessState
               port: server
             initialDelaySeconds: 20
             periodSeconds: 3
