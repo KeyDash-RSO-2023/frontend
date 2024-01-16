@@ -17,7 +17,7 @@ const Graph: React.FC<GraphProps> = ({ data, time_data, int, type, color }) => {
       return { name: 5 * index + "s", wpm: Number(wpm.toFixed(0)) };
     });
   } else if (type == "profile") {
-    mappedData = time_data.map((record, id) => {
+    mappedData = time_data.map((record) => {
       if (record.wpm == null) {
         return { name: record.time, wpm: 0 };
       }

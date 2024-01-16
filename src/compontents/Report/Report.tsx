@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Report.css";
-import { fetchReports, fetchReportsByUser } from "../../services/fetchReports";
+import { fetchReportsByUser } from "../../services/fetchReports";
 import Graph from "../Graph/Graph";
 
 const Report = () => {
-  const [data, setData] = useState(null);
   const [wpm, setWpm] = useState([]);
   const [acuraccy, setAcuraccy] = useState([]);
   const [avgWpm, setAvgWpm] = useState(0);
@@ -27,7 +26,6 @@ const Report = () => {
     const getData = async () => {
       try {
         const fetchedData = await fetchReportsByUser(session.userId);
-        setData(fetchedData.reportsByUser);
 
         let wpm_temp = [];
         let acuraccy_temp = [];
